@@ -15,10 +15,12 @@ public class BTR_EnemySpawner : MonoBehaviour
     public string[] enemies = new string[]{"Ruler","TRuler","Squad","Transporter"};
 
     private int _timing = 0;
+    private bool addWave;
     
     // Start is called before the first frame update
     void Start()
     {
+        addWave = false;
         isPlaying = true;
         objectPooler = BTR_ObjectPooler.Instance;
         StartCoroutine(SpawnFromPaul(1.0f));
@@ -37,6 +39,7 @@ public class BTR_EnemySpawner : MonoBehaviour
             }
             else if (_timing <= 70)
             {
+                addWave = false;
                 int random = Random.Range(0, spawnPoints.Length);
                 Vector3 radiusSpawn = new Vector3(Random.Range(-radiusFromSpawnpoint,radiusFromSpawnpoint),0,Random.Range(-radiusFromSpawnpoint,radiusFromSpawnpoint));
                 yield return new WaitForSeconds(timer);
@@ -73,7 +76,9 @@ public class BTR_EnemySpawner : MonoBehaviour
             }
             else
             {
+                addWave = true;
                 yield return new WaitForSeconds(timer);
+                addWave = false;
                 _timing = 0;
             }
 
