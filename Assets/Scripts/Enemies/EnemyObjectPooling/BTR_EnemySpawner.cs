@@ -20,13 +20,12 @@ public class BTR_EnemySpawner : MonoBehaviour
     void Start()
     {
         objectPooler = BTR_ObjectPooler.Instance;
-        StartCoroutine(SpawnFromPaul(1));
+        StartCoroutine(SpawnFromPaul(1.0f));
     }
 
 
     private IEnumerator SpawnFromPaul(float timer)
     {
-
         while (isPlaying)
         {
             Debug.Log(_timing);
