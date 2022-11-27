@@ -19,6 +19,7 @@ public class BTR_EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isPlaying = true;
         objectPooler = BTR_ObjectPooler.Instance;
         StartCoroutine(SpawnFromPaul(1.0f));
     }
